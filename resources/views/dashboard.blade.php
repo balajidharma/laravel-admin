@@ -1,4 +1,4 @@
-<x-admin::layout>
+<x-laravel-admin::layout>
     <x-slot name="header">
         {{ __('Dashboard') }}
     </x-slot>
@@ -12,4 +12,4 @@
             </div>
         </div>
     </div>
-</x-admin::layout>
+</x-laravel-admin::layout>

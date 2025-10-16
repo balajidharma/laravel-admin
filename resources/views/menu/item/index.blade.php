@@ -1,4 +1,4 @@
-<x-admin::wrapper>
+<x-laravel-admin::wrapper>
     <x-slot name="title">
         {{ __('Menus') }}
     </x-slot>
@@ -21,32 +21,32 @@
     </div>
 
     @can('adminCreate', \BalajiDharma\LaravelMenu\Models\MenuItem::class)
-    <x-admin::add-link href="{{ route('admin.menu.item.create', $menu->id) }}">
+    <x-laravel-admin::add-link href="{{ route('admin.menu.item.create', $menu->id) }}">
         {{ __('Add Menu Item') }}
-    </x-admin::add-link>
+    </x-laravel-admin::add-link>
     @endcan
     
     <div class="py-2">
         <div class="min-w-full  border-base-200 shadow overflow-x-auto">
-            <x-admin::grid.table>
+            <x-laravel-admin::grid.table>
                 <x-slot name="head">
                     <tr class="bg-base-200">
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                         {{ __('Name') }}
-                        </x-admin::grid.th>
-                        <x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Enabled') }}
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @canany(['adminUpdate', 'adminDelete'], new \BalajiDharma\LaravelMenu\Models\MenuItem)
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Actions') }}
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @endcanany
                     </tr>
                 </x-slot>
                 <x-slot name="body">
                     @foreach($items as $item)
-                        <x-admin::grid.index-menu-item :item="$item" :menu="$menu" level="0"/>
+                        <x-laravel-admin::grid.index-menu-item :item="$item" :menu="$menu" level="0"/>
                     @endforeach
                     @empty($items)
                         <tr>
@@ -58,7 +58,7 @@
                         </tr>
                     @endempty
                 </x-slot>
-            </x-admin::grid.table>
+            </x-laravel-admin::grid.table>
         </div>
     </div>
-</x-admin::wrapper>
+</x-laravel-admin::wrapper>

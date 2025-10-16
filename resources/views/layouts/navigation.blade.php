@@ -12,7 +12,7 @@
     <li>
         <a href="{{ $menu['link'] }}" class="{{ (request()->is(ltrim($menu['link'], '/'))) ? 'active' : '' }}">
             @if($menu['icon'])
-            <x-admin::base-icon path="{{$menu['icon']}}" />
+            <x-laravel-admin::base-icon path="{{$menu['icon']}}" />
             @endif
             {{ $menu['name'] }}
         </a>

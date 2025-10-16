@@ -20,7 +20,7 @@ class ActivityLogController extends Controller
 
         $crud = (new ActivityLogGrid)->list($activitylogs);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     /**
@@ -39,7 +39,7 @@ class ActivityLogController extends Controller
         $this->authorize('adminView', $activitylog);
         $crud = (new ActivityLogGrid)->show($activitylog);
 
-        return view('admin::crud.show', compact('crud'));
+        return view('laravel-admin::crud.show', compact('crud'));
     }
 
     /**

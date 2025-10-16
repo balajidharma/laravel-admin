@@ -24,7 +24,7 @@ class RoleController extends Controller
 
         $crud = (new RoleGrid)->list($roles);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     /**
@@ -37,7 +37,7 @@ class RoleController extends Controller
         $this->authorize('adminCreate', Role::class);
         $crud = (new RoleGrid)->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -64,7 +64,7 @@ class RoleController extends Controller
         $this->authorize('adminView', $role);
         $crud = (new RoleGrid)->show($role);
 
-        return view('admin::crud.show', compact('crud'));
+        return view('laravel-admin::crud.show', compact('crud'));
     }
 
     /**
@@ -78,7 +78,7 @@ class RoleController extends Controller
 
         $crud = (new RoleGrid)->form($role);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

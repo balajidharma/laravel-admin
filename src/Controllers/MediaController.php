@@ -21,7 +21,7 @@ class MediaController extends Controller
 
         $crud = (new MediaGrid)->list($mediaItems);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     public function create()
@@ -31,7 +31,7 @@ class MediaController extends Controller
         $mediaItems->whereIsOriginal();
         $crud = (new MediaGrid)->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     public function store(MediaCreateData $data, MediaCreateAction $mediaCreateAction)
@@ -49,7 +49,7 @@ class MediaController extends Controller
         $this->authorize('adminView', $media);
         $crud = (new MediaGrid)->show($media);
 
-        return view('admin::crud.show', compact('crud'));
+        return view('laravel-admin::crud.show', compact('crud'));
     }
 
     public function edit($id, FormBuilder $formBuilder)
@@ -58,7 +58,7 @@ class MediaController extends Controller
         $this->authorize('adminUpdate', $media);
         $crud = (new MediaGrid)->form($media);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     public function update(MediaUpdateData $mediaUpdateData, $id, MediaUpdateAction $mediaUpdateAction)

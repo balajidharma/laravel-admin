@@ -1,4 +1,4 @@
-<x-admin::wrapper>
+<x-laravel-admin::wrapper>
     <x-slot name="title">
             {{ __($title) }}
     </x-slot>
@@ -73,4 +73,4 @@
             </details>
         </div>
     </div>
-</x-admin::wrapper>
+</x-laravel-admin::wrapper>

@@ -9,7 +9,7 @@ Route::group([
     'as' => 'admin.',
 ], function () {
     Route::get('/', function () {
-        return view('admin::dashboard');
+        return view('laravel-admin::dashboard');
     })->name('dashboard');
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');

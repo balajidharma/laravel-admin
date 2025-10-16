@@ -24,7 +24,7 @@ class ReactionController extends Controller
 
         $crud = (new ReactionGrid)->list($reactions);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ReactionController extends Controller
         $this->authorize('adminCreate', Reaction::class);
         $crud = (new ReactionGrid)->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -71,7 +71,7 @@ class ReactionController extends Controller
             ];
         }
 
-        return view('admin::crud.show', compact('crud', 'relations'));
+        return view('laravel-admin::crud.show', compact('crud', 'relations'));
     }
 
     /**
@@ -84,7 +84,7 @@ class ReactionController extends Controller
         $this->authorize('adminUpdate', $reaction);
         $crud = (new ReactionGrid)->form($reaction);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

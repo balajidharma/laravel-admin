@@ -1,4 +1,4 @@
-<x-admin::wrapper>
+<x-laravel-admin::wrapper>
     <x-slot name="title">
         {{ __('Categories') }}
     </x-slot>
@@ -21,38 +21,38 @@
     </div>
 
     @can('adminCreate', \BalajiDharma\LaravelCategory\Models\Category::class)
-    <x-admin::add-link href="{{ route('admin.category.type.item.create', $type->id) }}">
+    <x-laravel-admin::add-link href="{{ route('admin.category.type.item.create', $type->id) }}">
         {{ __('Add Category') }}
-    </x-admin::add-link>
+    </x-laravel-admin::add-link>
     @endcan
     
     <div class="py-2">
         <div class="min-w-full  border-base-200 shadow overflow-x-auto">
-            <x-admin::grid.table>
+            <x-laravel-admin::grid.table>
                 <x-slot name="head">
                     <tr class="bg-base-200">
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                         {{ __('Name') }}
-                        </x-admin::grid.th>
-                        <x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                         {{ __('Slug') }}
-                        </x-admin::grid.th>
-                        <x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                         {{ __('Image') }}
-                        </x-admin::grid.th>
-                        <x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Enabled') }}
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @canany(['adminUpdate', 'adminDelete'], new \BalajiDharma\LaravelCategory\Models\Category)
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Actions') }}
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @endcanany
                     </tr>
                 </x-slot>
                 <x-slot name="body">
                     @foreach($items as $item)
-                        <x-admin::grid.index-category-item :item="$item" :type="$type" level="0"/>
+                        <x-laravel-admin::grid.index-category-item :item="$item" :type="$type" level="0"/>
                     @endforeach
                     @empty($items)
                         <tr>
@@ -64,7 +64,7 @@
                         </tr>
                     @endempty
                 </x-slot>
-            </x-admin::grid.table>
+            </x-laravel-admin::grid.table>
         </div>
     </div>
-</x-admin::wrapper>
+</x-laravel-admin::wrapper>

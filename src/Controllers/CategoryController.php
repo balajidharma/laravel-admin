@@ -31,7 +31,7 @@ class CategoryController extends Controller
             $crud->setAddtional(['type' => $type]);
             $crud = $crud->list($categories);
 
-            return view('admin::crud.index', compact('crud'));
+            return view('laravel-admin::crud.index', compact('crud'));
         }
         $items = (new Category)->toTree($type->id, true);
 
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $categoryItemGrid->setAddtional(['type' => $type]);
         $crud = $categoryItemGrid->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -79,7 +79,7 @@ class CategoryController extends Controller
         $categoryItemGrid->setAddtional(['type' => $type]);
         $crud = $categoryItemGrid->form($item);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

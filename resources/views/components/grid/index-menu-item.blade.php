@@ -1,19 +1,19 @@
 <tr>
-    <x-admin::grid.td>
+    <x-laravel-admin::grid.td>
         <div class="text-sm" style="margin-left:{{$level*20}}px;">
             @if($item['icon'])
-            <x-admin::base-icon path="{{$item['icon']}}" />
+            <x-laravel-admin::base-icon path="{{$item['icon']}}" />
             @endif
             {{ $item['name'] }}
         </div>
-    </x-admin::grid.td>
-    <x-admin::grid.td>
+    </x-laravel-admin::grid.td>
+    <x-laravel-admin::grid.td>
         <div class="text-sm">
             {{ $item['enabled'] ? 'Enabled' : 'Disabled' }}
         </div>
-    </x-admin::grid.td>
+    </x-laravel-admin::grid.td>
     @canany(['adminUpdate', 'adminDelete'], $item)
-    <x-admin::grid.td>
+    <x-laravel-admin::grid.td>
         <form action="{{ route('admin.menu.item.destroy', ['menu' => $menu->id, 'item' => $item['id']]) }}" method="POST">
             <div>
 
@@ -36,11 +36,11 @@
                 @endcan
             </div>
         </form>
-    </x-admin::grid.td>
+    </x-laravel-admin::grid.td>
     @endcanany
 </tr>
 @isset($item['children'])
     @foreach($item['children'] as $child)
-        <x-admin::grid.index-menu-item :item="$child" :menu="$menu" :level="($level+1)" />
+        <x-laravel-admin::grid.index-menu-item :item="$child" :menu="$menu" :level="($level+1)" />
     @endforeach
 @endisset

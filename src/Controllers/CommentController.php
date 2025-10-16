@@ -25,7 +25,7 @@ class CommentController extends Controller
 
         $crud = (new CommentGrid)->list($comments);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CommentController extends Controller
         $this->authorize('adminCreate', Comment::class);
         $crud = (new CommentGrid)->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -77,7 +77,7 @@ class CommentController extends Controller
             'view' => 'list',
         ];
 
-        return view('admin::crud.show', compact('crud', 'relations'));
+        return view('laravel-admin::crud.show', compact('crud', 'relations'));
     }
 
     /**
@@ -90,7 +90,7 @@ class CommentController extends Controller
         $this->authorize('adminUpdate', $comment);
         $crud = (new CommentGrid)->form($comment);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

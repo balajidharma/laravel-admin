@@ -23,7 +23,7 @@ class AttributeController extends Controller
         $attributes = (new Attribute)->newQuery();
         $crud = (new AttributeGrid)->list($attributes);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     /**
@@ -36,7 +36,7 @@ class AttributeController extends Controller
         $this->authorize('adminCreate', Attribute::class);
         $crud = (new AttributeGrid)->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -63,7 +63,7 @@ class AttributeController extends Controller
         $this->authorize('adminView', $attribute);
         $crud = (new AttributeGrid)->show($attribute);
 
-        return view('admin::crud.show', compact('crud'));
+        return view('laravel-admin::crud.show', compact('crud'));
     }
 
     /**
@@ -76,7 +76,7 @@ class AttributeController extends Controller
         $this->authorize('adminUpdate', $attribute);
         $crud = (new AttributeGrid)->form($attribute);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

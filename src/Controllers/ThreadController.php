@@ -28,7 +28,7 @@ class ThreadController extends Controller
 
         $crud = (new ThreadGrid)->list($threads);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     /**
@@ -41,7 +41,7 @@ class ThreadController extends Controller
         $this->authorize('adminCreate', Thread::class);
         $crud = (new ThreadGrid)->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ThreadController extends Controller
             'view' => 'list',
         ];
 
-        return view('admin::crud.show', compact('crud', 'relations'));
+        return view('laravel-admin::crud.show', compact('crud', 'relations'));
     }
 
     /**
@@ -101,7 +101,7 @@ class ThreadController extends Controller
         $this->authorize('adminUpdate', $thread);
         $crud = (new ThreadGrid)->form($thread);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

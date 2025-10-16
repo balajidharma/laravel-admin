@@ -1,48 +1,48 @@
-<x-admin::wrapper>
+<x-laravel-admin::wrapper>
     <x-slot name="title">
         {{ __('Users') }}
     </x-slot>
 
     @can('adminCreate', \App\Models\User::class)
-    <x-admin::add-link href="{{ route('admin.user.create') }}">
+    <x-laravel-admin::add-link href="{{ route('admin.user.create') }}">
         {{ __('Add User') }}
-    </x-admin::add-link>
+    </x-laravel-admin::add-link>
     @endcan
 
     <div class="py-2">
         <div class="min-w-full  border-base-200 shadow overflow-x-auto">
-            <x-admin::grid.search action="{{ route('admin.user.index') }}" />
-            <x-admin::grid.table>
+            <x-laravel-admin::grid.search action="{{ route('admin.user.index') }}" />
+            <x-laravel-admin::grid.table>
                 <x-slot name="head">
                     <tr class="bg-base-200">
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
-                        </x-admin::grid.th>
-                        <x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Email', 'attribute' => 'email'])
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @canany(['adminUpdate', 'adminDelete'], new \App\Models\User)
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Actions') }}
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @endcanany
                     </tr>
                 </x-slot>
                 <x-slot name="body">
                 @foreach($users as $user)
                     <tr>
-                        <x-admin::grid.td>
+                        <x-laravel-admin::grid.td>
                             <div>
                                 <a href="{{route('admin.user.show', $user->id)}}" class="no-underline hover:underline text-cyan-600">{{ $user->name }}</a>
                             </div>
-                        </x-admin::grid.td>
-                        <x-admin::grid.td>
+                        </x-laravel-admin::grid.td>
+                        <x-laravel-admin::grid.td>
                             <div>
                                 {{ $user->email }}
                             </div>
-                        </x-admin::grid.td>
+                        </x-laravel-admin::grid.td>
                         @canany(['adminUpdate', 'adminDelete'], $user)
-                        <x-admin::grid.td>
+                        <x-laravel-admin::grid.td>
                             <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST">
                                 <div>
                                     @can('adminUpdate', $user)
@@ -64,7 +64,7 @@
                                     @endcan
                                 </div>
                             </form>
-                        </x-admin::grid.td>
+                        </x-laravel-admin::grid.td>
                         @endcanany
                     </tr>
                     @endforeach
@@ -78,10 +78,10 @@
                         </tr>
                     @endif
                 </x-slot>
-            </x-admin::grid.table>
+            </x-laravel-admin::grid.table>
         </div>
         <div class="py-8">
             {{ $users->appends(request()->query())->links() }}
         </div>
     </div>
-</x-admin::wrapper>
+</x-laravel-admin::wrapper>

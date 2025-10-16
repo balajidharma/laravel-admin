@@ -38,7 +38,7 @@ class MenuItemController extends Controller
         $menuItemGrid->setAddtional(['menu' => $menu]);
         $crud = $menuItemGrid->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -67,7 +67,7 @@ class MenuItemController extends Controller
         $menuItemGrid->setAddtional(['menu' => $menu]);
         $crud = $menuItemGrid->form($item);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

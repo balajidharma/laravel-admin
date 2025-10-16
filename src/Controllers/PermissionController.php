@@ -27,7 +27,7 @@ class PermissionController extends Controller
             ->setDisplayFilters(false)
             ->list($permissions);
 
-        return view('admin::crud.index', compact('crud'));
+        return view('laravel-admin::crud.index', compact('crud'));
     }
 
     /**
@@ -40,7 +40,7 @@ class PermissionController extends Controller
         $this->authorize('adminCreate', Permission::class);
         $crud = (new PermissionGrid)->form();
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**
@@ -67,7 +67,7 @@ class PermissionController extends Controller
         $this->authorize('adminView', $permission);
         $crud = (new PermissionGrid)->show($permission);
 
-        return view('admin::crud.show', compact('crud'));
+        return view('laravel-admin::crud.show', compact('crud'));
     }
 
     /**
@@ -80,7 +80,7 @@ class PermissionController extends Controller
         $this->authorize('adminUpdate', $permission);
         $crud = (new PermissionGrid)->form($permission);
 
-        return view('admin::crud.edit', compact('crud'));
+        return view('laravel-admin::crud.edit', compact('crud'));
     }
 
     /**

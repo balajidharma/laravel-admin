@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-        @vite(['resources/css/admin/app.scss', 'resources/js/admin/app.js', 'resources/js/form-builder/field.js'])
+        @vite(['resources/css/vendor/laravel-admin/admin/app.scss', 'resources/js/vendor/laravel-admin/admin/app.js', 'resources/js/vendor/laravel-admin/form-builder/field.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="bg-base-100 drawer lg:drawer-open">
@@ -101,7 +101,7 @@
             </div>
             <div class="drawer-side z-40">
                 <label for="drawer" class="drawer-overlay" aria-label="Close menu"></label>
-                @include('admin::layouts.navigation')
+                @include('laravel-admin::layouts.navigation')
             </div>
         </div>
     </body>

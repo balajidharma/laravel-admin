@@ -1,4 +1,4 @@
-<x-admin::wrapper>
+<x-laravel-admin::wrapper>
     <x-slot name="title">
         {{ __($crud->title) }}
     </x-slot>
@@ -11,4 +11,4 @@
             @endforeach
         @endisset
     </div>
-</x-admin::wrapper>
+</x-laravel-admin::wrapper>

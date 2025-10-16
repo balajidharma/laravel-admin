@@ -1,56 +1,56 @@
-<x-admin::wrapper>
+<x-laravel-admin::wrapper>
     <x-slot name="title">
         {{ __('Category Types') }}
     </x-slot>
 
     @can('adminCreate', \BalajiDharma\LaravelCategory\Models\CategoryType::class)
-    <x-admin::add-link href="{{ route('admin.category.type.create') }}">
+    <x-laravel-admin::add-link href="{{ route('admin.category.type.create') }}">
         {{ __('Add Category Type') }}
-    </x-admin::add-link>
+    </x-laravel-admin::add-link>
     @endcan
 
     <div class="py-2">
         <div class="min-w-full  border-base-200 shadow overflow-x-auto">
-            <x-admin::grid.search action="{{ route('admin.category.type.index') }}" />
-            <x-admin::grid.table>
+            <x-laravel-admin::grid.search action="{{ route('admin.category.type.index') }}" />
+            <x-laravel-admin::grid.table>
                 <x-slot name="head">
                     <tr class="bg-base-200">
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             @include('admin.includes.sort-link', ['label' => 'Name', 'attribute' => 'name'])
-                        </x-admin::grid.th>
-                        <x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Description') }}
-                        </x-admin::grid.th>
-                        <x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Machine name') }}
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @canany(['adminUpdate', 'adminDelete'], new \BalajiDharma\LaravelCategory\Models\CategoryType)
-                        <x-admin::grid.th>
+                        <x-laravel-admin::grid.th>
                             {{ __('Actions') }}
-                        </x-admin::grid.th>
+                        </x-laravel-admin::grid.th>
                         @endcanany
                     </tr>
                 </x-slot>
                 <x-slot name="body">
                 @foreach($categoryTypes as $categoryType)
                     <tr>
-                        <x-admin::grid.td>
+                        <x-laravel-admin::grid.td>
                             <div>
                                 {{ $categoryType->name }}
                             </div>
-                        </x-admin::grid.td>
-                        <x-admin::grid.td>
+                        </x-laravel-admin::grid.td>
+                        <x-laravel-admin::grid.td>
                             <div>
                                 {{ $categoryType->description }}
                             </div>
-                        </x-admin::grid.td>
-                        <x-admin::grid.td>
+                        </x-laravel-admin::grid.td>
+                        <x-laravel-admin::grid.td>
                             <div>
                                 {{ $categoryType->machine_name }}
                             </div>
-                        </x-admin::grid.td>
+                        </x-laravel-admin::grid.td>
                         @canany(['adminUpdate', 'adminDelete'], $categoryType)
-                        <x-admin::grid.td>
+                        <x-laravel-admin::grid.td>
                             <form action="{{ route('admin.category.type.destroy', $categoryType->id) }}" method="POST">
                                 <div>
                                     @can('adminViewAny', \BalajiDharma\LaravelCategory\Models\Category::class)
@@ -80,7 +80,7 @@
                                     @endcan
                                 </div>
                             </form>
-                        </x-admin::grid.td>
+                        </x-laravel-admin::grid.td>
                         @endcanany
                     </tr>
                     @endforeach
@@ -94,10 +94,10 @@
                         </tr>
                     @endif
                 </x-slot>
-            </x-admin::grid.table>
+            </x-laravel-admin::grid.table>
         </div>
         <div class="py-8">
             {{ $categoryTypes->appends(request()->query())->links() }}
         </div>
     </div>
-</x-admin::wrapper>
+</x-laravel-admin::wrapper>
