@@ -52,9 +52,9 @@ class AdminServiceProvider extends ServiceProvider
             $output->writeln('input: [');
             $output->writeln('    "resources/css/app.css",');
             $output->writeln('    "resources/js/app.js",');
-            $output->writeln('    "resources/js/vendor/laravel-admin/admin/app.js",');
+            $output->writeln('    "resources/js/vendor/laravel-admin/app.js",');
             $output->writeln('    "resources/js/vendor/laravel-admin/form-builder/field.js",');
-            $output->writeln('    "resources/css/vendor/laravel-admin/admin/app.scss"');
+            $output->writeln('    "resources/css/vendor/laravel-admin/app.scss"');
             $output->writeln('],');
         }
     }
