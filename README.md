@@ -17,9 +17,5 @@ composer require balajidharma/laravel-admin
 ```
 - Publish the migration and views
 ```bash
-php artisan vendor:publish --provider="BalajiDharma\LaravelAdmin\AdminServiceProvider"
-```
-- Run the migrations
-```bash
-php artisan migrate
+php artisan laravel-admin:install --force
 ```
