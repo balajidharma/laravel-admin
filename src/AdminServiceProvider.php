@@ -37,9 +37,9 @@ class AdminServiceProvider extends ServiceProvider
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/laravel-admin'),
                 __DIR__ . '/../stubs/package.json' => base_path('package.json'),
                 __DIR__ . '/../tailwind.admin.config.js' => base_path('tailwind.admin.config.js'),
-                __DIR__ . '/../stubs/Models/Permission.php.stub' => base_path('Models/Permission.php'),
-                __DIR__ . '/../stubs/Models/Role.php.stub' => base_path('Models/Role.php'),
-                __DIR__ . '/../stubs/Models/User.php.stub' => base_path('Models/User.php'),
+                __DIR__ . '/../stubs/Models/Permission.php.stub' => base_path('app/Models/Permission.php'),
+                __DIR__ . '/../stubs/Models/Role.php.stub' => base_path('app/Models/Role.php'),
+                __DIR__ . '/../stubs/Models/User.php.stub' => base_path('app/Models/User.php'),
             ], ['laravel-admin-resources']);
         }
     }
