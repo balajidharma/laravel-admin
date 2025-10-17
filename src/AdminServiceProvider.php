@@ -36,7 +36,9 @@ class AdminServiceProvider extends ServiceProvider
                 __DIR__ . '/../resources/css' => resource_path('css/vendor/laravel-admin'),
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/laravel-admin'),
                 __DIR__ . '/../stubs/package.json' => base_path('package.json'),
-                __DIR__ . '/../tailwind.admin.config.js' => base_path('tailwind.admin.config.js'),
+                __DIR__ . '/../stubs/postcss.config.js' => base_path('postcss.config.js'),
+                __DIR__ . '/../stubs/tailwind.admin.config.js' => base_path('tailwind.admin.config.js'),
+                __DIR__ . '/../stubs/tailwind.config.js' => base_path('tailwind.config.js'),
                 __DIR__ . '/../stubs/app/Models' => base_path('app/Models'),
                 __DIR__ . '/../stubs/app/Http/Controllers' => base_path('app/Http/Controllers'),
                 __DIR__ . '/../stubs/app/Http/Middleware' => base_path('app/Http/Middleware'),
@@ -46,6 +48,7 @@ class AdminServiceProvider extends ServiceProvider
                 __DIR__ . '/../stubs/migrations' => base_path('database/migrations'),
                 __DIR__ . '/../stubs/routes' => base_path('routes'),
                 __DIR__ . '/../stubs/resources/views' => base_path('resources/views'),
+                __DIR__ . '/../stubs/resources/css' => base_path('resources/css'),
             ], ['laravel-admin-resources']);
         }
     }
