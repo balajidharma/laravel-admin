@@ -40,6 +40,7 @@ class AdminServiceProvider extends ServiceProvider
                 __DIR__ . '/../stubs/Models/Permission.php.stub' => base_path('app/Models/Permission.php'),
                 __DIR__ . '/../stubs/Models/Role.php.stub' => base_path('app/Models/Role.php'),
                 __DIR__ . '/../stubs/Models/User.php.stub' => base_path('app/Models/User.php'),
+                __DIR__ . '/../stubs/migrations' => base_path('database/migrations'),
             ], ['laravel-admin-resources']);
         }
     }
