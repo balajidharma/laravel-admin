@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\HasAccessAdmin;
+use BalajiDharma\LaravelAdmin\Middleware\HasAccessAdmin;
 
 Route::group([
     'namespace' => 'BalajiDharma\LaravelAdmin\Controllers',
