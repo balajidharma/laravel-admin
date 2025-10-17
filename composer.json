@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "balajidharma/laravel-admin-core": "^3.0"
+        "balajidharma/laravel-admin-core": "^3.0",
+        "balajidharma/laravel-crud": "^1.0"
     },
     "autoload": {
         "psr-4": {
