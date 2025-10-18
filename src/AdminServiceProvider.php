@@ -49,6 +49,7 @@ class AdminServiceProvider extends ServiceProvider
                 __DIR__ . '/../stubs/routes' => base_path('routes'),
                 __DIR__ . '/../stubs/resources/views' => base_path('resources/views'),
                 __DIR__ . '/../stubs/resources/css' => base_path('resources/css'),
+                __DIR__ . '/../stubs/resources/js' => base_path('resources/js'),
             ], ['laravel-admin-resources']);
         }
     }
