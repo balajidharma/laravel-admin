@@ -21,9 +21,23 @@ class InstallCommand extends Command
         $this->info('Installing Laravel Admin...');
 
         $this->info('Publishing assets...');
-        $this->call('vendor:publish', ['--tag' => 'laravel-admin-resources'] + ($force ? ['--force' => true] : []));
-        $this->call('vendor:publish', ['--tag' => 'admin-core'] + ($force ? ['--force' => true] : []));
-        $this->call('vendor:publish', ['--provider' => 'Spatie\Permission\PermissionServiceProvider'] + ($force ? ['--force' => true] : []));
+        $this->call('vendor:publish', [
+            '--tag' => 'laravel-admin-resources',
+            '--force' => $force
+        ]);
+        $this->call('vendor:publish', [
+            '--tag' => 'admin-core',
+            '--force' => $force
+        ]);
+        $this->call('vendor:publish', [
+            '--provider' => 'Spatie\Permission\PermissionServiceProvider',
+            '--force' => $force
+        ]);
+        $this->call('vendor:publish', [
+            '--provider' => 'Spatie\Activitylog\ActivitylogServiceProvider',
+            '--tag' => 'activitylog-migrations',
+            '--force' => $force
+        ]);
 
         if ($this->confirm('Do you want to run migrations and seed the database?')) {
             $this->info('Running migrations and seeding...');
