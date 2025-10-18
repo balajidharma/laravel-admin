@@ -22,11 +22,11 @@ class InstallCommand extends Command
 
         $this->info('Publishing assets...');
         $this->call('vendor:publish', [
-            '--tag' => 'laravel-admin-resources',
+            '--tag' => 'admin-core',
             '--force' => $force
         ]);
         $this->call('vendor:publish', [
-            '--tag' => 'admin-core',
+            '--tag' => 'laravel-admin-resources',
             '--force' => $force
         ]);
         $this->call('vendor:publish', [
