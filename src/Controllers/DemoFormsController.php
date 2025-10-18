@@ -14,11 +14,11 @@ class DemoFormsController extends Controller
 
         $title = $this->title;
 
-        return view('admin.demo.forms.index', compact('formBuilder', 'title'));
+        return view('laravel-admin::demo.forms.index', compact('formBuilder', 'title'));
     }
 
     public function store()
     {
-        return redirect()->route('admin.demo.forms.index');
+        return redirect()->route('laravel-admin::demo.forms.index');
     }
 }
