@@ -23,7 +23,7 @@ class MenuItemController extends Controller
         $this->authorize('adminViewAny', MenuItem::class);
         $items = (new MenuItem)->toTree($menu->id, true);
 
-        return view('admin.menu.item.index', compact('items', 'menu'));
+        return view('laravel-admin::menu.item.index', compact('items', 'menu'));
     }
 
     /**

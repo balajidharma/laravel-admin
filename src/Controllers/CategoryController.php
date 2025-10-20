@@ -35,7 +35,7 @@ class CategoryController extends Controller
         }
         $items = (new Category)->toTree($type->id, true);
 
-        return view('admin.category.item.index', compact('items', 'type'));
+        return view('laravel-admin::category.item.index', compact('items', 'type'));
     }
 
     /**

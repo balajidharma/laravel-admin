@@ -121,7 +121,7 @@ class UserController extends Controller
     {
         $user = \Auth::user();
 
-        return view('admin.user.account_info', compact('user'));
+        return view('laravel-admin::user.account_info', compact('user'));
     }
 
     /**
