@@ -25,7 +25,6 @@ class AdminServiceProvider extends ServiceProvider
     {
         View::composer('laravel-admin::layouts.navigation', MenuComposer::class);
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-admin');
-        $this->registerRoutes();
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -47,21 +46,11 @@ class AdminServiceProvider extends ServiceProvider
                 __DIR__ . '/../stubs/config' => base_path('config'),
                 __DIR__ . '/../stubs/migrations' => base_path('database/migrations'),
                 __DIR__ . '/../stubs/routes' => base_path('routes'),
+                __DIR__ . '/../stubs/bootstrap' => base_path('bootstrap'),
                 __DIR__ . '/../stubs/resources/views' => base_path('resources/views'),
                 __DIR__ . '/../stubs/resources/css' => base_path('resources/css'),
                 __DIR__ . '/../stubs/resources/js' => base_path('resources/js'),
             ], ['laravel-admin-resources']);
         }
-    }
-
-    /**
-     * Register the package routes.
-     *
-     * @return void
-     */
-    protected function registerRoutes()
-    {
-        Route::middleware('web')
-             ->group(__DIR__.'/../routes/admin.php');
     }
 }
