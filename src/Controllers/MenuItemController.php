@@ -34,7 +34,8 @@ class MenuItemController extends Controller
     public function create(Menu $menu)
     {
         $this->authorize('adminCreate', MenuItem::class);
-        $menuItemGrid = (new MenuItemGrid);
+        $gridClass = config('admin.menu.grid.menu_item', MenuItemGrid::class);
+        $menuItemGrid = app($gridClass);
         $menuItemGrid->setAddtional(['menu' => $menu]);
         $crud = $menuItemGrid->form();
 
@@ -63,7 +64,8 @@ class MenuItemController extends Controller
     public function edit(Menu $menu, MenuItem $item)
     {
         $this->authorize('adminUpdate', $item);
-        $menuItemGrid = (new MenuItemGrid);
+        $gridClass = config('admin.menu.grid.menu_item', MenuItemGrid::class);
+        $menuItemGrid = app($gridClass);
         $menuItemGrid->setAddtional(['menu' => $menu]);
         $crud = $menuItemGrid->form($item);
 

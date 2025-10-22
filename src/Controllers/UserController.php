@@ -24,8 +24,8 @@ class UserController extends Controller
     {
         $this->authorize('adminViewAny', User::class);
         $users = (new User)->newQuery()->with(['roles']);
-
-        $crud = (new UserGrid)->list($users);
+        $gridClass = config('admin.user.grid.user', UserGrid::class);
+        $crud = app($gridClass)->list($users);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -38,7 +38,8 @@ class UserController extends Controller
     public function create()
     {
         $this->authorize('adminCreate', User::class);
-        $crud = (new UserGrid)->form();
+        $gridClass = config('admin.user.grid.user', UserGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -65,7 +66,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         $this->authorize('adminView', $user);
-        $crud = (new UserGrid)->show($user);
+        $gridClass = config('admin.user.grid.user', UserGrid::class);
+        $crud = app($gridClass)->show($user);
 
         return view('laravel-admin::crud.show', compact('crud'));
     }
@@ -78,8 +80,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $this->authorize('adminUpdate', $user);
-
-        $crud = (new UserGrid)->form($user);
+        $gridClass = config('admin.user.grid.user', UserGrid::class);
+        $crud = app($gridClass)->form($user);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

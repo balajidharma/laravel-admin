@@ -21,8 +21,8 @@ class PermissionController extends Controller
     {
         $this->authorize('adminViewAny', Permission::class);
         $permissions = (new Permission)->newQuery();
-
-        $crud = (new PermissionGrid)
+        $gridClass = config('admin.permission.grid.permission', PermissionGrid::class);
+        $crud = app($gridClass)
             ->setDisplaySearch(true)
             ->setDisplayFilters(false)
             ->list($permissions);
@@ -38,7 +38,8 @@ class PermissionController extends Controller
     public function create()
     {
         $this->authorize('adminCreate', Permission::class);
-        $crud = (new PermissionGrid)->form();
+        $gridClass = config('admin.permission.grid.permission', PermissionGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -65,7 +66,8 @@ class PermissionController extends Controller
     public function show(Permission $permission)
     {
         $this->authorize('adminView', $permission);
-        $crud = (new PermissionGrid)->show($permission);
+        $gridClass = config('admin.permission.grid.permission', PermissionGrid::class);
+        $crud = app($gridClass)->show($permission);
 
         return view('laravel-admin::crud.show', compact('crud'));
     }
@@ -78,7 +80,8 @@ class PermissionController extends Controller
     public function edit(Permission $permission)
     {
         $this->authorize('adminUpdate', $permission);
-        $crud = (new PermissionGrid)->form($permission);
+        $gridClass = config('admin.permission.grid.permission', PermissionGrid::class);
+        $crud = app($gridClass)->form($permission);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

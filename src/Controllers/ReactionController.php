@@ -20,9 +20,10 @@ class ReactionController extends Controller
     public function index()
     {
         $this->authorize('adminViewAny', Reaction::class);
+        $gridClass = config('admin.reaction.grid.reaction', ReactionGrid::class);
         $reactions = (new Reaction)->newQuery();
 
-        $crud = (new ReactionGrid)->list($reactions);
+        $crud = app($gridClass)->list($reactions);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -35,7 +36,8 @@ class ReactionController extends Controller
     public function create()
     {
         $this->authorize('adminCreate', Reaction::class);
-        $crud = (new ReactionGrid)->form();
+        $gridClass = config('admin.reaction.grid.reaction', ReactionGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -61,12 +63,15 @@ class ReactionController extends Controller
     public function show(Reaction $reaction)
     {
         $this->authorize('adminView', $reaction);
-        $crud = (new ReactionGrid)->show($reaction);
+        $gridClass = config('admin.reaction.grid.reaction', ReactionGrid::class);
+        $crud = app($gridClass)->show($reaction);
         $relations = [];
+
+        $userGridClass = config('admin.user.grid.user', \BalajiDharma\LaravelAdminCore\Grid\UserGrid::class);
 
         if ($reaction->reactor_type == 'App\Models\User') {
             $relations[] = [
-                'crud' => (new \BalajiDharma\LaravelAdminCore\Grid\UserGrid)->setTitle('Reactor')->show($reaction->reactor()->first()),
+                'crud' => app($userGridClass)->setTitle('Reactor')->show($reaction->reactor()->first()),
                 'view' => 'show',
             ];
         }
@@ -82,7 +87,8 @@ class ReactionController extends Controller
     public function edit(Reaction $reaction)
     {
         $this->authorize('adminUpdate', $reaction);
-        $crud = (new ReactionGrid)->form($reaction);
+        $gridClass = config('admin.reaction.grid.reaction', ReactionGrid::class);
+        $crud = app($gridClass)->form($reaction);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

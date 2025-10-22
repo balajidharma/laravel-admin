@@ -22,8 +22,8 @@ class CommentController extends Controller
     {
         $this->authorize('adminViewAny', Comment::class);
         $comments = (new Comment)->newQuery();
-
-        $crud = (new CommentGrid)->list($comments);
+        $gridClass = config('admin.comment.grid.comment', CommentGrid::class);
+        $crud = app($gridClass)->list($comments);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -36,7 +36,8 @@ class CommentController extends Controller
     public function create()
     {
         $this->authorize('adminCreate', Comment::class);
-        $crud = (new CommentGrid)->form();
+        $gridClass = config('admin.comment.grid.comment', CommentGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -62,18 +63,22 @@ class CommentController extends Controller
     public function show(Comment $comment)
     {
         $this->authorize('adminView', $comment);
-        $crud = (new CommentGrid)->show($comment);
+        $gridClass = config('admin.comment.grid.comment', CommentGrid::class);
+        $crud = app($gridClass)->show($comment);
         $relations = [];
+
+        $userGridClass = config('admin.user.grid.user', \BalajiDharma\LaravelAdminCore\Grid\UserGrid::class);
+        $activityLogGridClass = config('admin.activitylog.grid.activitylog', ActivityLogGrid::class);
 
         if ($comment->commenter_type == 'App\Models\User') {
             $relations[] = [
-                'crud' => (new \BalajiDharma\LaravelAdminCore\Grid\UserGrid)->setTitle('Commenter')->show($comment->commenter()->first()),
+                'crud' => app($userGridClass)->setTitle('Commenter')->show($comment->commenter()->first()),
                 'view' => 'show',
             ];
         }
 
         $relations[] = [
-            'crud' => (new ActivityLogGrid)->setRedirectUrl()->list($comment->activities()->getQuery()),
+            'crud' => app($activityLogGridClass)->setRedirectUrl()->list($comment->activities()->getQuery()),
             'view' => 'list',
         ];
 
@@ -88,7 +93,8 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         $this->authorize('adminUpdate', $comment);
-        $crud = (new CommentGrid)->form($comment);
+        $gridClass = config('admin.comment.grid.comment', CommentGrid::class);
+        $crud = app($gridClass)->form($comment);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

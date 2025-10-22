@@ -27,7 +27,8 @@ class CategoryController extends Controller
 
         if ($type->is_flat) {
             $categories = (new Category)->newQuery()->whereRelation('categoryType', 'id', $type->id);
-            $crud = (new CategoryItemGrid);
+            $gridClass = config('admin.category.grid.category_item', CategoryItemGrid::class);
+            $crud = app($gridClass);
             $crud->setAddtional(['type' => $type]);
             $crud = $crud->list($categories);
 
@@ -46,7 +47,8 @@ class CategoryController extends Controller
     public function create(CategoryType $type)
     {
         $this->authorize('adminCreate', Category::class);
-        $categoryItemGrid = (new CategoryItemGrid);
+        $gridClass = config('admin.category.grid.category_item', CategoryItemGrid::class);
+        $categoryItemGrid = app($gridClass);
         $categoryItemGrid->setAddtional(['type' => $type]);
         $crud = $categoryItemGrid->form();
 
@@ -75,7 +77,8 @@ class CategoryController extends Controller
     public function edit(CategoryType $type, Category $item)
     {
         $this->authorize('adminUpdate', $item);
-        $categoryItemGrid = (new CategoryItemGrid);
+        $gridClass = config('admin.category.grid.category_item', CategoryItemGrid::class);
+        $categoryItemGrid = app($gridClass);
         $categoryItemGrid->setAddtional(['type' => $type]);
         $crud = $categoryItemGrid->form($item);
 

@@ -17,8 +17,8 @@ class ActivityLogController extends Controller
     {
         $this->authorize('adminViewAny', Activity::class);
         $activitylogs = (new Activity)->newQuery();
-
-        $crud = (new ActivityLogGrid)->list($activitylogs);
+        $gridClass = config('admin.activitylog.grid.activitylog', ActivityLogGrid::class);
+        $crud = app($gridClass)->list($activitylogs);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -37,7 +37,8 @@ class ActivityLogController extends Controller
     public function show(Activity $activitylog)
     {
         $this->authorize('adminView', $activitylog);
-        $crud = (new ActivityLogGrid)->show($activitylog);
+        $gridClass = config('admin.activitylog.grid.activitylog', ActivityLogGrid::class);
+        $crud = app($gridClass)->show($activitylog);
 
         return view('laravel-admin::crud.show', compact('crud'));
     }

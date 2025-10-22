@@ -18,8 +18,8 @@ class MediaController extends Controller
         $this->authorize('adminViewAny', Media::class);
         $mediaItems = (new Media)->newQuery();
         $mediaItems->whereIsOriginal();
-
-        $crud = (new MediaGrid)->list($mediaItems);
+        $gridClass = config('admin.media.grid.media', MediaGrid::class);
+        $crud = app($gridClass)->list($mediaItems);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -29,7 +29,8 @@ class MediaController extends Controller
         $this->authorize('adminCreate', Media::class);
         $mediaItems = (new Media)->newQuery();
         $mediaItems->whereIsOriginal();
-        $crud = (new MediaGrid)->form();
+        $gridClass = config('admin.media.grid.media', MediaGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -47,7 +48,8 @@ class MediaController extends Controller
     {
         $media = Media::findOrFail($id);
         $this->authorize('adminView', $media);
-        $crud = (new MediaGrid)->show($media);
+        $gridClass = config('admin.media.grid.media', MediaGrid::class);
+        $crud = app($gridClass)->show($media);
 
         return view('laravel-admin::crud.show', compact('crud'));
     }
@@ -56,7 +58,8 @@ class MediaController extends Controller
     {
         $media = Media::findOrFail($id);
         $this->authorize('adminUpdate', $media);
-        $crud = (new MediaGrid)->form($media);
+        $gridClass = config('admin.media.grid.media', MediaGrid::class);
+        $crud = app($gridClass)->form($media);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

@@ -67,24 +67,27 @@ class ThreadController extends Controller
         $relations = [];
         $this->authorize('adminView', $thread);
         $crud = (new ThreadGrid)->show($thread);
-
+        $commentGridClass = config('admin.comment.grid.comment', CommentGrid::class);
+        $reactionGridClass = config('admin.reaction.grid.reaction', ReactionGrid::class);
+        $attributeGridClass = config('admin.attribute.grid.attribute', AttributeGrid::class);
+        $activityLogGridClass = config('admin.activitylog.grid.activitylog', ActivityLogGrid::class);
         $relations[] = [
-            'crud' => (new CommentGrid)->setRedirectUrl()->list($thread->comments()->getQuery()),
+            'crud' => app($commentGridClass)->setRedirectUrl()->list($thread->comments()->getQuery()),
             'view' => 'list',
         ];
 
         $relations[] = [
-            'crud' => (new ActivityLogGrid)->setRedirectUrl()->list($thread->activities()->getQuery()),
+            'crud' => app($activityLogGridClass)->setRedirectUrl()->list($thread->activities()->getQuery()),
             'view' => 'list',
         ];
 
         $relations[] = [
-            'crud' => (new AttributeGrid)->setRedirectUrl()->list($thread->attributes()->getQuery()),
+            'crud' => app($attributeGridClass)->setRedirectUrl()->list($thread->attributes()->getQuery()),
             'view' => 'list',
         ];
 
         $relations[] = [
-            'crud' => (new ReactionGrid)->setRedirectUrl()->list($thread->reactions()->getQuery()),
+            'crud' => app($reactionGridClass)->setRedirectUrl()->list($thread->reactions()->getQuery()),
             'view' => 'list',
         ];
 
@@ -99,7 +102,8 @@ class ThreadController extends Controller
     public function edit(Thread $thread)
     {
         $this->authorize('adminUpdate', $thread);
-        $crud = (new ThreadGrid)->form($thread);
+        $gridClass = config('admin.thread.grid.thread', ThreadGrid::class);
+        $crud = app($gridClass)->form($thread);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

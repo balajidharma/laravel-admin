@@ -21,8 +21,8 @@ class RoleController extends Controller
     {
         $this->authorize('adminViewAny', Role::class);
         $roles = (new Role)->newQuery()->with(['permissions']);
-
-        $crud = (new RoleGrid)->list($roles);
+        $gridClass = config('admin.role.grid.role', RoleGrid::class);
+        $crud = app($gridClass)->list($roles);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -35,7 +35,8 @@ class RoleController extends Controller
     public function create()
     {
         $this->authorize('adminCreate', Role::class);
-        $crud = (new RoleGrid)->form();
+        $gridClass = config('admin.role.grid.role', RoleGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -62,7 +63,8 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         $this->authorize('adminView', $role);
-        $crud = (new RoleGrid)->show($role);
+        $gridClass = config('admin.role.grid.role', RoleGrid::class);
+        $crud = app($gridClass)->show($role);
 
         return view('laravel-admin::crud.show', compact('crud'));
     }
@@ -75,8 +77,8 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $this->authorize('adminUpdate', $role);
-
-        $crud = (new RoleGrid)->form($role);
+        $gridClass = config('admin.role.grid.role', RoleGrid::class);
+        $crud = app($gridClass)->form($role);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

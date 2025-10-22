@@ -22,7 +22,8 @@ class MenuController extends Controller
         $this->authorize('adminViewAny', Menu::class);
         $menus = (new Menu)->newQuery()->with(['menuItems']);
 
-        $crud = (new MenuGrid)->list($menus);
+        $gridClass = config('admin.menu.grid.menu', MenuGrid::class);
+        $crud = app($gridClass)->list($menus);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -35,7 +36,8 @@ class MenuController extends Controller
     public function create()
     {
         $this->authorize('adminCreate', Menu::class);
-        $crud = (new MenuGrid)->form();
+        $gridClass = config('admin.menu.grid.menu', MenuGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -62,7 +64,8 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         $this->authorize('adminUpdate', $menu);
-        $crud = (new MenuGrid)->form($menu);
+        $gridClass = config('admin.menu.grid.menu', MenuGrid::class);
+        $crud = app($gridClass)->form($menu);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }

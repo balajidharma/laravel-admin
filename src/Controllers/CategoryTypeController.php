@@ -21,7 +21,8 @@ class CategoryTypeController extends Controller
     {
         $this->authorize('adminViewAny', CategoryType::class);
         $categoryTypes = (new CategoryType)->newQuery()->with(['categories']);
-        $crud = (new CategoryTypeGrid)->list($categoryTypes);
+        $gridClass = config('admin.category.grid.category_type', CategoryTypeGrid::class);
+        $crud = app($gridClass)->list($categoryTypes);
 
         return view('laravel-admin::crud.index', compact('crud'));
     }
@@ -34,7 +35,8 @@ class CategoryTypeController extends Controller
     public function create()
     {
         $this->authorize('adminCreate', CategoryType::class);
-        $crud = (new CategoryTypeGrid)->form();
+        $gridClass = config('admin.category.grid.category_type', CategoryTypeGrid::class);
+        $crud = app($gridClass)->form();
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
@@ -62,7 +64,8 @@ class CategoryTypeController extends Controller
     public function edit(CategoryType $type)
     {
         $this->authorize('adminUpdate', $type);
-        $crud = (new CategoryTypeGrid)->form($type);
+        $gridClass = config('admin.category.grid.category_type', CategoryTypeGrid::class);
+        $crud = app($gridClass)->form($type);
 
         return view('laravel-admin::crud.edit', compact('crud'));
     }
