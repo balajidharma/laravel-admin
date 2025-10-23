@@ -31,8 +31,6 @@ class AdminServiceProvider extends ServiceProvider
                 InstallCommand::class,
             ]);
             $this->publishes([
-                __DIR__ . '/../resources/js' => resource_path('js/vendor/laravel-admin'),
-                __DIR__ . '/../resources/css' => resource_path('css/vendor/laravel-admin'),
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/laravel-admin'),
                 __DIR__ . '/../stubs/package.json' => base_path('package.json'),
                 __DIR__ . '/../stubs/postcss.config.js' => base_path('postcss.config.js'),
