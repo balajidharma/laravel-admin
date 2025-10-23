@@ -66,9 +66,9 @@ class InstallCommand extends Command
             $this->info('input: [');
             $this->info('    "resources/css/app.css",');
             $this->info('    "resources/js/app.js",');
-            $this->info('    "resources/js/vendor/laravel-admin/app.js",');
-            $this->info('    "resources/js/vendor/laravel-admin/form-builder/field.js",');
-            $this->info('    "resources/css/vendor/laravel-admin/app.scss",');
+            $this->info('    "resources/js/laravel-admin/app.js",');
+            $this->info('    "resources/js/laravel-admin/form-builder/field.js",');
+            $this->info('    "resources/css/laravel-admin/app.scss",');
             $this->info('],');
         }
     }
