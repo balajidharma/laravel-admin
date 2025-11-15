@@ -123,6 +123,7 @@ class CategoryController extends Controller
 
         $formattedCategories = $categories->map(function ($category) {
             return [
+                'id' => $category->id,
                 'value' => $category->name,
             ];
         });

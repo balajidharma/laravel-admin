@@ -5,7 +5,6 @@ namespace BalajiDharma\LaravelAdmin;
 use BalajiDharma\LaravelAdmin\AdminAuthServiceProvider;
 use BalajiDharma\LaravelAdmin\Composers\MenuComposer;
 use BalajiDharma\LaravelAdmin\Commands\InstallCommand;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
