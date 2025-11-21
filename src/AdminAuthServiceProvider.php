@@ -23,8 +23,9 @@ class AdminAuthServiceProvider extends ServiceProvider
         'Plank\Mediable\Media' => 'BalajiDharma\LaravelAdminCore\Policies\MediaPolicy',
         'BalajiDharma\LaravelComment\Models\Comment' => 'BalajiDharma\LaravelAdminCore\Policies\CommentPolicy',
         'BalajiDharma\LaravelForum\Models\Thread' => 'BalajiDharma\LaravelAdminCore\Policies\ThreadPolicy',
-        'BalajiDharma\LaravelAttributes\Models\Atrribute' => 'BalajiDharma\LaravelAdminCore\Policies\AtrributePolicy',
+        'BalajiDharma\LaravelAttributes\Models\Attribute' => 'BalajiDharma\LaravelAdminCore\Policies\AttributePolicy',
         'BalajiDharma\LaravelReaction\Models\Reaction' => 'BalajiDharma\LaravelAdminCore\Policies\ReactionPolicy',
+        'Spatie\Activitylog\Models\Activity' => 'BalajiDharma\LaravelAdminCore\Policies\ActivityLogPolicy',
     ];
 
     /**
